@@ -205,7 +205,11 @@ let UIController = (function() {
 	                    <div class="right clearfix">
 	                        <div class="item__value">${formatValue}</div>
 	                        <div class="item__delete">
-	                        	<button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+								<button class="item__delete--btn">
+									<svg>
+										<use xlink:href="sprite.svg#icon-x-circle"></use>
+									</svg>
+								</button>
 	                   		</div>
 	                	</div>
 	            </div>`
@@ -217,7 +221,11 @@ let UIController = (function() {
 	                        <div class="item__value">${formatValue}</div>
 	                        <div class="item__percentage">21%</div>
 	                        <div class="item__delete">
-	          	                 <button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+								   <button class="item__delete--btn">
+									   <svg>
+								   		<use xlink:href="sprite.svg#icon-x-circle"></use>
+								   	</svg>
+								   </button>
 	                        </div>
 	                    </div>
 	            </div>`
