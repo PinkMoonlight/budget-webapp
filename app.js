@@ -123,6 +123,12 @@ let budgetController = (function(){
 			};
 		},
 
+		//Save to local storage for page reload
+		updateLocalStorage: function() {
+			let dataString = JSON.stringify(data);
+			localStorage.setItem('savedData', dataString);
+		},
+
 		testing: function() {
 			console.log(data);
 		}
@@ -291,6 +297,8 @@ let UIController = (function() {
 			year = now.getFullYear();
 
 			document.querySelector(DOMstrings.dateLabel).textContent = `${months[month]}, ${year}`;
+			localStorage.setItem('displayMonth', `${months[month]}, ${year}`);
+			return `${months[month]}, ${year}`;
 		},
 
 		changedType: function() {
@@ -337,6 +345,8 @@ let controller = (function(budgetCtrl, UICtrl) {
 		let budget = budgetCtrl.getBudget();
 		// 3. display the budget on the UI 
 		UICtrl.displayBudget(budget);
+		//4. push data to local storage
+		budgetCtrl.updateLocalStorage();
 	};
 
 	let updatePercentages = function () {
@@ -405,6 +415,28 @@ let controller = (function(budgetCtrl, UICtrl) {
 		return {
 			init: function() {
 				console.log("applicaion has started");
+				let date = UICtrl.displayMonth();
+				let savedData = localStorage.getItem('savedData');
+				let savedDate = localStorage.getItem('displayMonth');
+				if (savedDate === date && savedData) {
+					let previousBudget = JSON.parse(savedData);
+					console.log(previousBudget);
+					UICtrl.displayBudget({
+						budget: previousBudget.budget,
+						totalInc: previousBudget.totals.inc,
+						totalExp: previousBudget.totals.exp,
+						percentage: previousBudget.percentage,
+					});
+					let savedExp = previousBudget.allItems.exp.map(expense => {
+						UICtrl.addListItem(expense, 'exp');
+						budgetCtrl.addItem('exp', expense.description, expense.value);
+					});
+					let savedInc = previousBudget.allItems.inc.map(income => {
+						UICtrl.addListItem(income, 'inc');
+						budgetCtrl.addItem('inc', income.description, income.value);
+					});
+					setupEventListeners();	
+			} else {
 				UICtrl.displayMonth();
 				UICtrl.displayBudget({
 					budget: 0,
@@ -413,6 +445,7 @@ let controller = (function(budgetCtrl, UICtrl) {
 					percentage: -1
 				});
 				setupEventListeners();
+				}
 			}
 		};
 	
