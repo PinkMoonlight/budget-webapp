@@ -231,15 +231,20 @@ h2 {
     text-align: center;
 }
 
-.income .item__value,
-.income .item__delete--btn {
+.income .item__value {
     color: #28B9B5;
+}
+.income .item__delete--btn {
+    fill: #28B9B5;
 }
 
 .expenses .item__value,
-.expenses .item__percentage,
-.expenses .item__delete--btn {
+.expenses .item__percentage {
     color: #FF5049;
+}
+
+.expenses .item__delete--btn {
+    fill: #FF5049;
 }
 
 
@@ -248,7 +253,8 @@ h2 {
 }
 
 .item__delete--btn {
-    font-size: 22px;
+    height: 22px;
+    width: 22px;
     background: none;
     border: none;
     cursor: pointer;
