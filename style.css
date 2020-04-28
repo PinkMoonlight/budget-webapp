@@ -245,6 +245,8 @@ h2 {
 
 .expenses .item__delete--btn {
     fill: #FF5049;
+    height: 22px;
+    width: 22px;
 }
 
 
@@ -253,8 +255,8 @@ h2 {
 }
 
 .item__delete--btn {
-    height: 22px;
-    width: 22px;
+    height: 20px;
+    width: 20px;
     background: none;
     border: none;
     cursor: pointer;

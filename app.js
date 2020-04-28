@@ -221,11 +221,11 @@ let UIController = (function() {
 	                        <div class="item__value">${formatValue}</div>
 	                        <div class="item__percentage">21%</div>
 	                        <div class="item__delete">
-								   <button>
-									   <svg class="item__delete--btn">
-								   		<use xlink:href="sprite.svg#icon-x-circle"></use>
-								   	</svg>
-								   </button>
+								<button>
+								    <svg class="item__delete--btn">
+							   			<use xlink:href="sprite.svg#icon-x-circle"></use>
+							   		</svg>
+							   </button>
 	                        </div>
 	                    </div>
 	            </div>`
