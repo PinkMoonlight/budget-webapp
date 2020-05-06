@@ -297,7 +297,7 @@ h2 {
 
 .name-link:link,
 .name-link:visited {
-    color: inherit;
+    color: #444;
     text-decoration: none;
     text-transform: uppercase;
     display: inline-block;
